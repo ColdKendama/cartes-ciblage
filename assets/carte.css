@@ -169,6 +169,7 @@ h1 {
 /* Pied de page */
 .pied { color: var(--encre-douce); font-size: 15px; display: grid; gap: 6px; }
 .pied p { margin: 0; max-width: 75ch; }
+.pied .source { max-width: none; }
 .source { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14px; }
 
 .impression-seulement { display: none; }
@@ -197,7 +198,7 @@ h1 {
    de la boîte d'impression, pour que les tuiles soient déjà chargées. */
 @page { size: letter portrait; margin: 0.5in; }
 
-body.impression #carte { width: 7.5in; height: 5.2in; min-height: 0; }
+body.impression #carte { width: 7.5in; height: 5in; min-height: 0; }
 
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -211,7 +212,7 @@ body.impression #carte { width: 7.5in; height: 5.2in; min-height: 0; }
   .date-impression { margin: 0; font-size: 10pt; color: var(--encre-douce); }
   .mise-en-page { display: block; }
   .cadre-carte { border-radius: 0; border-color: #9AA7A2; break-inside: avoid; }
-  #carte { width: 7.5in; height: 5.2in; min-height: 0; }
+  #carte { width: 7.5in; height: 5in; min-height: 0; }
   .leaflet-control-zoom { display: none; }
   .leaflet-control-attribution { font-size: 7pt; }
   .liste { max-height: none; min-height: 0; overflow: visible; border: 0; padding: 0.14in 0 0; }
