@@ -1,0 +1,225 @@
+:root {
+  --fond: #F3F5F4;
+  --papier: #FFFFFF;
+  --encre: #15232B;
+  --encre-douce: #52626B;
+  --filet: #D6DDDA;
+  --accent: #0B5D7A;
+  --accent-fonce: #084760;
+  --texte: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --titre: "Source Serif 4", Georgia, "Times New Roman", serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body { margin: 0; }
+body {
+  background: var(--fond);
+  color: var(--encre);
+  font: 17px/1.45 var(--texte);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 24px 32px;
+  display: grid;
+  gap: 20px;
+}
+
+/* En-tête */
+.entete {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--filet);
+}
+.entete-texte { display: grid; gap: 4px; min-width: 0; }
+.surtitre {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+h1 {
+  margin: 0;
+  font: 600 clamp(30px, 4vw, 42px)/1.1 var(--titre);
+  text-wrap: balance;
+}
+.campagnes { margin: 2px 0 0; color: var(--encre-douce); overflow-wrap: anywhere; }
+.resume { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.imprimer {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: 700 17px/1 var(--texte);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.imprimer:hover { background: var(--accent-fonce); }
+.imprimer:disabled { opacity: .45; cursor: default; }
+.imprimer:focus-visible, .filtre:focus-visible, .ville:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Filtres de campagnes (seulement s'il y en a plusieurs) */
+.filtres { display: flex; flex-wrap: wrap; gap: 8px; }
+.filtre {
+  --c: var(--encre);
+  padding: 8px 14px;
+  border: 1px solid var(--filet);
+  border-radius: 999px;
+  background: var(--papier);
+  color: var(--encre);
+  font: 600 15px/1.2 var(--texte);
+  cursor: pointer;
+}
+.filtre[aria-pressed="true"] { border-color: var(--c); box-shadow: inset 0 0 0 1px var(--c); color: var(--c); }
+
+/* Carte et liste */
+.mise-en-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+}
+.cadre-carte {
+  background: var(--papier);
+  border: 1px solid var(--filet);
+  border-radius: 6px;
+  overflow: hidden;
+}
+#carte { height: min(72vh, 680px); min-height: 380px; background: #E9EEEC; }
+#carte .leaflet-tile-pane { filter: saturate(.4) contrast(1.02); }
+
+.liste {
+  background: var(--papier);
+  border: 1px solid var(--filet);
+  border-radius: 6px;
+  padding: 16px 8px 8px;
+  max-height: min(72vh, 680px);
+  min-height: 380px;
+  overflow-y: auto;
+}
+.liste h2 {
+  margin: 0 12px 8px;
+  font: 700 13px/1.2 var(--texte);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--encre-douce);
+}
+.liste ol { list-style: none; margin: 0; padding: 0; }
+.ville {
+  --c: var(--accent);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ville:hover, li.actif .ville { background: #EAF1F3; }
+.ville:disabled { cursor: default; }
+.num, .pastille span {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font: 700 12px/1 var(--texte);
+  font-variant-numeric: tabular-nums;
+}
+.nom { font-weight: 600; overflow-wrap: anywhere; }
+.nom .note { display: block; font-weight: 400; font-size: 14px; color: #9A3B12; }
+.rayon { color: var(--encre-douce); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.erreur { margin: 8px 12px; color: #9A3B12; font-weight: 600; }
+
+/* Pastilles numérotées sur la carte */
+.pastille { background: none; border: 0; }
+.pastille span { box-shadow: 0 0 0 2px #fff, 0 1px 3px rgba(0, 0, 0, .35); }
+.leaflet-tooltip { font: 600 14px/1.3 var(--texte); }
+.leaflet-container { font-family: var(--texte); }
+
+/* Pied de page */
+.pied { color: var(--encre-douce); font-size: 15px; display: grid; gap: 6px; }
+.pied p { margin: 0; max-width: 75ch; }
+.source { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14px; }
+
+.impression-seulement { display: none; }
+
+/* Voile pendant que la carte se prépare pour l'impression */
+.preparation {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: rgba(243, 245, 244, .96);
+  font: 600 20px/1.3 var(--texte);
+}
+
+@media (max-width: 860px) {
+  #app { padding: 20px 16px 28px; }
+  .mise-en-page { grid-template-columns: minmax(0, 1fr); }
+  #carte { height: 60vh; min-height: 320px; }
+  .liste { max-height: none; min-height: 0; }
+  .imprimer { width: 100%; justify-content: center; }
+}
+
+/* Impression : lettre US portrait, carte pleine largeur, liste en 3 colonnes.
+   La classe .impression donne à la carte sa taille imprimée avant l'ouverture
+   de la boîte d'impression, pour que les tuiles soient déjà chargées. */
+@page { size: letter portrait; margin: 0.5in; }
+
+body.impression #carte { width: 7.5in; height: 5.2in; min-height: 0; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff; font-size: 11pt; }
+  #app { max-width: none; padding: 0; gap: 0.16in; }
+  .ecran-seulement { display: none !important; }
+  .impression-seulement { display: inline; }
+  .entete { padding-bottom: 0.1in; align-items: flex-end; }
+  .surtitre { font-size: 8.5pt; }
+  h1 { font-size: 24pt; }
+  .date-impression { margin: 0; font-size: 10pt; color: var(--encre-douce); }
+  .mise-en-page { display: block; }
+  .cadre-carte { border-radius: 0; border-color: #9AA7A2; break-inside: avoid; }
+  #carte { width: 7.5in; height: 5.2in; min-height: 0; }
+  .leaflet-control-zoom { display: none; }
+  .leaflet-control-attribution { font-size: 7pt; }
+  .liste { max-height: none; min-height: 0; overflow: visible; border: 0; padding: 0.14in 0 0; }
+  .liste h2 { margin: 0 0 0.06in; font-size: 8.5pt; }
+  .liste ol { columns: 3; column-gap: 0.25in; }
+  .liste li { break-inside: avoid; }
+  .ville { padding: 2px 0; gap: 6px; grid-template-columns: 20px minmax(0, 1fr) auto; }
+  .num { width: 18px; height: 18px; font-size: 8pt; }
+  .pied { font-size: 9pt; margin-top: 0.06in; }
+  .source { font-size: 8.5pt; }
+}
