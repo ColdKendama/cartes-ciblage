@@ -154,7 +154,10 @@ h1 {
 
 /* Pastilles numérotées sur la carte */
 .pastille { background: none; border: 0; }
-.pastille span { box-shadow: 0 0 0 2px #fff, 0 1px 3px rgba(0, 0, 0, .35); }
+/* Contour net, sans flou : une ombre floue s'imprime en petite image carrée
+   avec masque de transparence, que l'aperçu macOS et bien des imprimantes
+   rendent en carré gris autour de la pastille. */
+.pastille span { box-shadow: 0 0 0 2px #fff, 0 0 0 3px #7D8B91; }
 .leaflet-tooltip { font: 600 14px/1.3 var(--texte); }
 .leaflet-container { font-family: var(--texte); }
 
