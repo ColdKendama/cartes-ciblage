@@ -41,14 +41,6 @@ body {
   border-bottom: 1px solid var(--filet);
 }
 .entete-texte { display: grid; gap: 4px; min-width: 0; }
-.surtitre {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
 h1 {
   margin: 0;
   font: 600 clamp(30px, 4vw, 42px)/1.1 var(--titre);
@@ -207,7 +199,6 @@ body.impression #carte { width: 7.5in; height: 5in; min-height: 0; }
   .ecran-seulement { display: none !important; }
   .impression-seulement { display: inline; }
   .entete { padding-bottom: 0.1in; align-items: flex-end; }
-  .surtitre { font-size: 8.5pt; }
   h1 { font-size: 24pt; }
   .date-impression { margin: 0; font-size: 10pt; color: var(--encre-douce); }
   .mise-en-page { display: block; }

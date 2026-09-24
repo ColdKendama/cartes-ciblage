@@ -81,7 +81,6 @@
   document.getElementById('app').innerHTML = `
     <header class="entete">
       <div class="entete-texte">
-        <p class="surtitre">Ciblage géographique Meta</p>
         <h1 id="client"></h1>
         <p class="campagnes" id="campagnes"></p>
         <p class="resume" id="resume">Chargement des villes…</p>
@@ -99,8 +98,8 @@
       </section>
     </main>
     <footer class="pied">
-      <p>Chaque cercle montre la zone où les publicités Meta sont diffusées autour de la ville.
-      Les limites sont approximatives : Meta mesure le rayon à partir de son propre point central.</p>
+      <p>Chaque cercle montre la zone où les publicités sont diffusées autour de la ville.
+      Les limites sont approximatives : la plateforme publicitaire mesure le rayon à partir de son propre point central.</p>
       <p class="source">
         <span class="ecran-seulement" id="lecture"></span>
         <span class="impression-seulement">Version à jour en ligne : <span id="adresse"></span></span>
@@ -164,8 +163,9 @@
       .filter(v => filtre === null || v.campagne === filtre)
       .sort((a, b) => tri.compare(a.nom, b.nom));
 
-    const nomsCampagnes = filtre === null ? campagnes : [filtre];
-    $('campagnes').textContent = nomsCampagnes.filter(Boolean).join(' · ');
+    // Les noms de campagnes Meta sont du jargon interne : le client voit un
+    // sous-titre fixe, modifiable par client (window.CARTE.sousTitre).
+    $('campagnes').textContent = config.sousTitre || 'Ciblage géographique publicitaire';
     $('resume').textContent = resume(visibles);
     dessinerFiltres();
 

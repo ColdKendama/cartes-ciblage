@@ -25,8 +25,10 @@ colonnes (sauf Latitude, Longitude, Trouvé comme, qui restent ensemble).
 |---|---|---|---|---|---|---|
 | Vente anniversaire 2026 | Alma, Quebec | 40 | ☑ | *auto* | *auto* | *auto* |
 
-- **Campagne** s'affiche telle quelle au client. Plusieurs campagnes : des
-  filtres apparaissent, une couleur par campagne.
+- **Campagne** ne s'affiche pas en sous-titre : le client voit « Ciblage
+  géographique publicitaire » (autre texte : `sousTitre` dans
+  `<client>/index.html`). Plusieurs campagnes : des filtres à leur nom
+  apparaissent, une couleur par campagne.
 - **Ville** au format de Meta (`Alma, Quebec`). La page affiche `Alma`.
 - **Actif** décoché : la ville disparaît de la carte sans perdre la ligne.
 - **Trouvé comme** : le lieu retenu par le géocodeur. Si ce n'est pas la
