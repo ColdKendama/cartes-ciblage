@@ -38,6 +38,9 @@ colonnes (sauf Latitude, Longitude, Trouvé comme, qui restent ensemble).
 1. Dans son fichier de ciblage : coller `apps-script/Carte.gs`, puis menu
    **Carte > Créer l'onglet Carte** et **Activer la mise à jour automatique**.
 2. Publier l'onglet « Carte » en CSV (File > Share > Publish to web).
+   **Seulement ce lien publié** (`/spreadsheets/d/e/2PACX-…`) va dans ce
+   dépôt public, jamais le lien du classeur : partagé en « Editor », il
+   laisserait n'importe qui modifier le ciblage.
 3. Copier `gagnon-freres/` vers `<client>/`, changer `client` et `source`
    dans `index.html`.
 
